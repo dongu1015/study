@@ -1,0 +1,65 @@
+# 프로젝트 이름
+spring:
+  application:
+    name: dongu
+  datasource:
+    # MySQL 접속 주소 (localhost:3306 = 기본 포트)
+    # dongguyo_db 는 아까 만든 데이터베이스 이름
+    # useSSL=false : SSL 안 쓴다는 의미 (로컬 개발에서는 보통 false)
+    # serverTimezone=Asia/Seoul : 타임존 설정
+    # characterEncoding=UTF-8 : 한글 깨짐 방지
+    url: jdbc:mysql://localhost:3306/donguyo_DB
+
+    # MySQL 접속 계정 (보통 root)
+    username: root
+
+    # 접속 비밀번호 (직접 설정한 값 입력)
+    password: sk0052..
+
+    # MySQL 드라이버 클래스명 (고정값)
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      # 앱 실행 시 테이블 자동 생성/갱신 방식 설정
+      # - create: 실행 시마다 테이블 새로 생성 (기존 데이터 삭제됨)
+      # - update: 기존 테이블 유지하면서 필요한 컬럼만 추가 (개발용)
+      # - validate: 엔티티와 DB 구조 일치하는지만 확인 (운영용)
+      # - none: 아무것도 안 함
+      ddl-auto: update
+
+    properties:
+      hibernate:
+        # 사용할 SQL 문법 버전 (MySQL 8 기준)
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+        # 실행되는 SQL 쿼리를 콘솔에 출력할지 여부 (true면 보임)
+        show_sql: true
+
+        # 출력되는 SQL을 보기 좋게 포맷팅 (줄바꿈, 들여쓰기 등)
+        format_sql: true
+
+  servlet:
+    encoding:
+      # 문자 인코딩 설정 (UTF-8)
+      charset: UTF-8
+
+      # 이 설정을 강제로 모든 요청/응답에 적용할지 여부
+      force: true
+
+
+# 데이터베이스 드라이버 클래스 지정
+#  driver-class-name:
+
+# 데이터베이스 연결을 위한 URL 설정
+#  url: jdbc:mysql://localhost:(DB 포트)/(DB 이름)?serverTimezone=Asia/Seoul
+
+# 서버 포트 설정
+server:
+  port:
+    8000
+
+
+
+
+
